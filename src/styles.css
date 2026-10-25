@@ -1,0 +1,83 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  --paper: #f4f0e7;
+  --ink: #1c1915;
+  --muted: #6d655b;
+  --line: #e4dcd0;
+  --card: #fbf8f3;
+  --brass: #8f4e22;
+  --on-brass: #fbf8f3;
+  --brass-soft: #f6eadc;
+  --inset: #efeae1;
+  color-scheme: light;
+}
+
+.dark {
+  --paper: #10120f;
+  --ink: #f3efe6;
+  --muted: #b1a89b;
+  --line: #2c312b;
+  --card: #191c17;
+  --brass: #e2a45c;
+  --on-brass: #1c140c;
+  --brass-soft: #2c261c;
+  --inset: #141712;
+  color-scheme: dark;
+}
+
+@theme inline {
+  --font-sans: "Instrument Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Instrument Serif", Georgia, serif;
+  --color-paper: var(--paper);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-card: var(--card);
+  --color-brass: var(--brass);
+  --color-on-brass: var(--on-brass);
+  --color-brass-soft: var(--brass-soft);
+  --color-inset: var(--inset);
+}
+
+@layer base {
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+
+  html {
+    background: var(--paper);
+  }
+
+  body {
+    margin: 0;
+    min-height: 100vh;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--font-sans);
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+  }
+
+  ::selection {
+    background: var(--brass-soft);
+    color: var(--ink);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--brass);
+    outline-offset: 2px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}
